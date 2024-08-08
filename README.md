@@ -1,6 +1,6 @@
 # Viva Payments Minimal Dependencies
 
-[![VivaPayments logo](https://www.vivawallet.com/assets/vw-logo.svg "Viva Wallet logo")](https://www.vivawallet.com/)
+[![VivaPayments logo](./assets/vw-logo.svg "Viva Wallet logo")](https://www.vivawallet.com/)
 
 This package provides a streamlined interface for the Viva Wallet Payment API, enabling seamless integration with **Smart Checkout**, **Webhooks**, and support for both **API v1** and **API v2** calls.
 
