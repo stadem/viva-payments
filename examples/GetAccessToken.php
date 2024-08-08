@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . '/../../vendor/autoload.php';
+require_once __DIR__ . '/../vendor/autoload.php';
 use Stadem\VivaPayments\Enums;
 use Stadem\VivaPayments\Services\AccessToken;
 use Stadem\VivaPayments\Request\Customer;
