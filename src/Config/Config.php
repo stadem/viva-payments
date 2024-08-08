@@ -12,13 +12,15 @@ class Config
     public function __construct($configKey = null)
     {
         
+        // $this->settings = require dirname(__DIR__, 2) . '/viva-config.php';
+        
         $paths = [
             dirname(__DIR__, 2) . '/viva-config.php',
             dirname(__DIR__, 5) . '/viva-config.php'];
 
         $this->settings = $this->loadConfigFile($paths);
 
-        // $this->settings = require dirname(__DIR__, 2) . '/viva-config.php';
+        
 
         if ($configKey) {
             $this->config = $this->get($configKey);
