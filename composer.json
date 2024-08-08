@@ -1,0 +1,12 @@
+
+{
+    "name": "stadem/viva-payments",
+    "description": "Viva Payment package for PHP 8+.",
+    "autoload": {
+        "psr-4": {
+            "stadem\\viva-payments\\": "src/"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
