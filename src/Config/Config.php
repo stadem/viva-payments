@@ -11,6 +11,7 @@ class Config
 
     public function __construct($configKey = null)
     {
+        
         $paths = [
             dirname(__DIR__, 2) . '/viva-config.php',
             dirname(__DIR__, 5) . '/viva-config.php'];
