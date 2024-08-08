@@ -1,11 +1,8 @@
 # Viva Payments Minimal Dependencies
 
-
-
 [![VivaPayments logo](https://www.vivawallet.com/assets/vw-logo.svg "Viva Wallet logo")](https://www.vivawallet.com/)
 
 This package provides a streamlined interface for the Viva Wallet Payment API, enabling seamless integration with **Smart Checkout**, **Webhooks**, and support for both **API v1** and **API v2** calls.
-
 
 ## Features
 
@@ -19,7 +16,7 @@ This package provides a streamlined interface for the Viva Wallet Payment API, e
 
 Install the package through Composer.
 
-This package requires PHP 8.1 + and no other dependencies.
+This package requires PHP 8.2 + and no other dependencies.
 
 ```
 composer require stadem/viva-payment
@@ -313,7 +310,7 @@ For comprehensive documentation, please visit the Viva Wallet Developer Portal.
 ## Contributing
 Contributions are welcome! Please submit a pull request or open an issue to discuss potential changes.
 
-##License
+## License
 This project is licensed under the MIT License. See the LICENSE file for details.
 
 ## Disclaimer
