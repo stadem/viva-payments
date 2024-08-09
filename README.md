@@ -19,7 +19,7 @@ Install the package through Composer.
 This package requires PHP 8.2 + and no other dependencies.
 
 ```
-composer require stadem/viva-payment
+composer require stadem/viva-payments
 ```
 
 #### Configuration
