@@ -28,9 +28,9 @@ composer require stadem/viva-payments
 
 #### Configuration
 
-Rename `viva-config.php.php.example` to `viva-config.php.php` and add your credentials.
+Rename `viva-config.php.example` to `viva-config.php` and add your credentials.
 
-Add the following data on your `viva-config.php.php`.
+Add the following data on your `viva-config.php`.
 
 And for you local environment 
 ```php
