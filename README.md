@@ -1,4 +1,8 @@
-# Viva Payments Minimal Dependencies
+# Viva Payments - Minimal Dependencies
+
+[![Latest Version on Packagist](https://img.shields.io/packagist/v/stadem/viva-payments.svg?style=flat-square)](https://packagist.org/packages/stadem/viva-payments)
+[![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
+
 
 [![VivaPayments logo](./assets/vw-logo.svg "Viva Wallet logo")](https://www.vivawallet.com/)
 
@@ -19,14 +23,14 @@ Install the package through Composer.
 This package requires PHP 8.2 + and no other dependencies.
 
 ```
-composer require stadem/viva-payment
+composer require stadem/viva-payments
 ```
 
 #### Configuration
 
-Rename `config.php.example` to `config.php` and add your credentials.
+Rename `viva-config.php.php.example` to `viva-config.php.php` and add your credentials.
 
-Add the following data on your `config.php`.
+Add the following data on your `viva-config.php.php`.
 
 And for you local environment 
 ```php
@@ -295,10 +299,12 @@ try {
 ```
 
 
+## Run tests via PEST
+You can run tests via PEST with the following command
 
-
-
-
+```
+ ./vendor/bin/pest tests/Payments
+```
 
 
 ## Upcoming Features
