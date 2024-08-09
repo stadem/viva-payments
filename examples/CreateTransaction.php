@@ -60,9 +60,9 @@ try {
     $order->setPaymentMethodsFees($paymentMethodFees);
 
     $getOrderJson = $order->send();
-    // echo $order->getOrderCode();
-    // '<a href="'.$order->redirectUrl(PaymentMethods:Enums\PaymentMethods::fromName('VivaWallet')).'" '.$order->getOrderCode().' </a>';
+    
     echo '<a href="' . $order->redirectUrl(PaymentMethods:8) . '" target="blank">';
+    // '<a href="'.$order->redirectUrl(PaymentMethods:Enums\PaymentMethods::fromName('VivaWallet')).'" '.$order->getOrderCode().' </a>';
     // echo '<a href="' . $order->redirectUrl(PaymentMethods: Enums\PaymentMethods::fromName('CreditCard')) . '" target="blank">';
     // echo '<a href="' . $order->redirectUrl(PaymentMethods: Enums\PaymentMethods::fromName('VivaWallet')) . '" target="blank">';
     echo $order->getOrderCode();
@@ -72,108 +72,3 @@ try {
 }
 
 // dd($order);
-
-
-
-
-
-
-
-
-
-
-
-############################# Documentation #############################
-
-///GET ENV PARAMETERS
-// $config = new Config('vivaDEMO');
-// $url = $config->getEnvConfig('VIVA_ACCOUNT_URL');
-// echo $url;
-#OR 
-// $config = new Config();
-// $dbConfig = $config->get('vivaDEMO');
-// echo $dbConfig['VIVA_MERCHANT_ID'];
-
-
-///RUN CURL NATINE
-// $curl = new CurlWrapper($url.'/connect/token');
-// $curl->addHeader('Content-Type: application/x-www-form-urlencoded');
-// $curl->addHeader('User-Agent: PostmanRuntime/0.0.1');
-// $curl->addHeader('Accept: */*');
-// $curl->setBasicAuth($config->getEnvConfig('VIVA_CLIENT_ID'),$config->getEnvConfig('VIVA_CLIENT_SECRET'));
-// $response = $curl->post(array('grant_type' => 'client_credentials'));
-// $response = json_encode(json_decode($response,true));
-// echo $response;
-
-
-///GET ACCESS TOKEN
-// $accessToken = new AccessToken();
-// $accessToken = $accessToken->getAccessToken();
-// echo $accessToken;
-
-
-##ENUMS 
-// $Status = Status::PAID;
-// echo $Status->type();
-// var_dump($Status);
-
-// $type = Enums\Environment::Production;
-// echo $type->value;
-
-// $lang = RequestLang::cases();
-// dd($lang);
-
-// $lang = RequestLang::from('el-GR');
-// dd($lang);
-
-
-
-
-##CUSTOMERS 
-// $customer = new Customer(
-//     $email = 'example@test.com',
-//     $fullName = 'John Doe',
-//     $phone = '+306987654321',
-//     $countryCode = '',
-//     $requestLang = Enums\RequestLang::Greek,
-// );
-// // print_r($customer->toArray());
-// print_r($customer->toJson()). PHP_EOL;
-
-
-// $requestLang = $_POST['requestLang'] ?? 'el-GR';
-// $customer = new Customer(
-//     $email = 'example@test.com',
-//     $fullName = 'John Doe',
-//     $phone = '+306987654321',
-//     $countryCode = '',
-//     $requestLang = Enums\RequestLang::from($requestLang),
-// );
-// dd($customer);
-
-
-
-
-##PAYMENT
-// $order = new PaymentOrder($CreatePaymentOrder,$accessToken);
-// $order->setCustomer($customer);
-// $getOrder= $order->getOrder();
-// $getOrderJson= $order->toJson();
-// echo $getOrderJson;
-// $getOrderJson= $order->send();
-// dd($getOrderJson);
-
-
-
-
-// require_once '../src/PaymentGateway/VivaPayment/Transaction.php';
-
-// use stadem\PaymentGateway\VivaWallet\Transaction as VivaTransaction;
-// var_dump(new VivaTransaction());
-
-
-
-
-
-// $Transaction = new Transaction(25);
-// $Transaction->process();
