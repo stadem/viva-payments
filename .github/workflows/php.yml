@@ -45,14 +45,14 @@ jobs:
     - name: Install Composer dependencies
       run: composer install --no-progress --no-suggest --prefer-dist
 
-    # - name: Replace config placeholders
-    #   run: |
-    #     sed -e "s/%%VIVA_API_KEY%%/${{ secrets.VIVA_API_KEY }}/" \
-    #         -e "s/%%VIVA_MERCHANT_ID%%/${{ secrets.VIVA_MERCHANT_ID }}/" \
-    #         -e "s/%%VIVA_SOURCE_CODE%%/${{ secrets.VIVA_SOURCE_CODE }}/" \
-    #          -e "s/%%VIVA_CLIENT_ID%%/${{ secrets.VIVA_CLIENT_ID }}/" \
-    #         -e "s/%%VIVA_CLIENT_SECRET%%/${{ secrets.VIVA_CLIENT_SECRET }}/" \
-    #         viva-config.php.example > viva-config.php
+    - name: Replace config placeholders
+      run: |
+        sed -e "s/%%VIVA_API_KEY%%/${{ secrets.VIVA_API_KEY }}/" \
+            -e "s/%%VIVA_MERCHANT_ID%%/${{ secrets.VIVA_MERCHANT_ID }}/" \
+            -e "s/%%VIVA_SOURCE_CODE%%/${{ secrets.VIVA_SOURCE_CODE }}/" \
+             -e "s/%%VIVA_CLIENT_ID%%/${{ secrets.VIVA_CLIENT_ID }}/" \
+            -e "s/%%VIVA_CLIENT_SECRET%%/${{ secrets.VIVA_CLIENT_SECRET }}/" \
+            viva-config.php.example > viva-config.php
 
     # - name: Run Pest tests
     #   run: ./vendor/bin/pest --coverage --colors=never
