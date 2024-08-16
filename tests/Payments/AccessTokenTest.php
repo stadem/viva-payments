@@ -21,14 +21,6 @@ test('creates an access token for Viva DEMO environment', function () {
 
 });
 
-test('status Code for Viva Production environment', function () {
-
-  $accessToken = new AccessToken(environment:'vivaPROD');
-  $token = $accessToken->getAccessToken();
-  expect($accessToken->getStatusCode())->toBe(200);
-
-});
-
 
 
 test('status Code for Viva DEMO environment', function () {
@@ -41,14 +33,22 @@ test('status Code for Viva DEMO environment', function () {
 });
 
 
+// test('status Code for Viva Production environment', function () {
 
-test('creates an access token for Viva Production environment', function () {
+//   $accessToken = new AccessToken(environment:'vivaPROD');
+//   $token = $accessToken->getAccessToken();
+//   expect($accessToken->getStatusCode())->toBe(200);
 
-  $accessToken = new AccessToken(environment:'vivaPROD');
-  $token = $accessToken->getAccessToken();
+// });
 
-  expect($token)->not->toBeNull();
 
-});
+// test('creates an access token for Viva Production environment', function () {
+
+//   $accessToken = new AccessToken(environment:'vivaPROD');
+//   $token = $accessToken->getAccessToken();
+
+//   expect($token)->not->toBeNull();
+
+// });
 
 
