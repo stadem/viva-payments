@@ -26,9 +26,12 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.3'
-        extensions: mbstring, intl, dom, xdebug 
+        extensions: mbstring, intl, dom, xdebug
         ini-values: post_max_size=256M, upload_max_filesize=256M
         coverage: xdebug
+
+    - name: Check Xdebug status
+      run: php -v && php -m | grep xdebug
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
@@ -50,9 +53,12 @@ jobs:
         sed -e "s/%%VIVA_API_KEY%%/${{ secrets.VIVA_API_KEY }}/" \
             -e "s/%%VIVA_MERCHANT_ID%%/${{ secrets.VIVA_MERCHANT_ID }}/" \
             -e "s/%%VIVA_SOURCE_CODE%%/${{ secrets.VIVA_SOURCE_CODE }}/" \
-             -e "s/%%VIVA_CLIENT_ID%%/${{ secrets.VIVA_CLIENT_ID }}/" \
+            -e "s/%%VIVA_CLIENT_ID%%/${{ secrets.VIVA_CLIENT_ID }}/" \
             -e "s/%%VIVA_CLIENT_SECRET%%/${{ secrets.VIVA_CLIENT_SECRET }}/" \
             viva-config.php.example > viva-config.php
+
+    - name: Display generated config
+      run: cat viva-config.php
 
     - name: Run Pest tests
       run: ./vendor/bin/pest tests/Payments --coverage --colors=never
