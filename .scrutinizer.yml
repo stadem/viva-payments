@@ -1,11 +1,4 @@
 build:
-    before_scripts:
-        - sudo apt-get update
-        - sudo apt-get install -y openssl libssl-dev
-        - openssl version
-    scripts:
-        - composer install
-        
     environment:
         php:
             version: 8.2
@@ -17,10 +10,13 @@ build:
             - phpcs-run
 
 filter:
+    paths: [ "src/*" ]
     excluded_paths: [tests/*]
 
 checks:
     php:
+        code_rating: true
+        duplication: true
         remove_extra_empty_lines: true
         remove_php_closing_tag: true
         remove_trailing_whitespace: true
@@ -36,6 +32,4 @@ checks:
         fix_doc_comments: true
 
 tools:
-    external_code_coverage:
-        timeout: 600
-        runs: 3
+    external_code_coverage: true
