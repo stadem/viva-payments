@@ -26,9 +26,9 @@ jobs:
       uses: shivammathur/setup-php@v2
       with:
         php-version: '8.3'
-        extensions: mbstring, intl, dom
+        extensions: mbstring, intl, dom, xdebug 
         ini-values: post_max_size=256M, upload_max_filesize=256M
-        coverage: none
+        coverage: xdebug
 
     - name: Validate composer.json and composer.lock
       run: composer validate --strict
