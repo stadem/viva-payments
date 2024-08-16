@@ -1,4 +1,11 @@
 build:
+    before_scripts:
+        - sudo apt-get update
+        - sudo apt-get install -y openssl libssl-dev
+        - openssl version
+    scripts:
+        - composer install
+        
     environment:
         php:
             version: 8.2
@@ -8,7 +15,7 @@ build:
           override:
             - php-scrutinizer-run
             - phpcs-run
-            
+
 filter:
     excluded_paths: [tests/*]
 
