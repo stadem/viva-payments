@@ -1,0 +1,48 @@
+name: PHP CI
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    env:
+      VIVA_API_KEY: ${{ secrets.VIVA_API_KEY }}
+      VIVA_MERCHANT_ID: ${{ secrets.VIVA_MERCHANT_ID }}
+      VIVA_SOURCE_CODE: ${{ secrets.VIVA_SOURCE_CODE }}
+      VIVA_CLIENT_ID: ${{ secrets.VIVA_CLIENT_ID }}
+      VIVA_CLIENT_SECRET: ${{ secrets.VIVA_CLIENT_SECRET }}
+
+    steps:
+    - name: Checkout code
+      uses: actions/checkout@v3
+
+    - name: Set up PHP
+      uses: shivammathur/setup-php@v2
+      with:
+        php-version: '8.3'
+        extensions: mbstring, intl, dom
+        ini-values: post_max_size=256M, upload_max_filesize=256M
+        coverage: none
+
+    - name: Install Composer dependencies
+      run: composer install --no-progress --no-suggest --prefer-dist
+
+    - name: Replace config placeholders
+      run: |
+        sed -e "s/%%VIVA_API_KEY%%/${{ secrets.VIVA_API_KEY }}/" \
+            -e "s/%%VIVA_MERCHANT_ID%%/${{ secrets.VIVA_MERCHANT_ID }}/" \
+            -e "s/%%VIVA_SOURCE_CODE%%/${{ secrets.VIVA_SOURCE_CODE }}/" \
+             -e "s/%%VIVA_CLIENT_ID%%/${{ secrets.VIVA_CLIENT_ID }}/" \
+            -e "s/%%VIVA_CLIENT_SECRET%%/${{ secrets.VIVA_CLIENT_SECRET }}/" \
+            viva-config.php.example > viva-config.php
+
+    - name: Run Pest tests
+      run: ./vendor/bin/pest --coverage --colors=never

@@ -1,18 +1,16 @@
-<?php
-
 return [
-     'curlDebug' => 0,   
-     'defaultProvider' => 'vivaDEMO',
+    'curlDebug' => 0,   
+    'defaultProvider' => 'vivaDEMO',
     'vivaDEMO' => [
         'VIVA_URL' => 'https://demo.vivapayments.com',
         'VIVA_ACCOUNT_URL' => 'https://demo-accounts.vivapayments.com',
         'VIVA_API_URL' => 'https://demo-api.vivapayments.com',
-        'VIVA_API_KEY' => '',
-        'VIVA_MERCHANT_ID' => '',
+        'VIVA_API_KEY' => '%%VIVA_API_KEY%%',
+        'VIVA_MERCHANT_ID' => '%%VIVA_MERCHANT_ID%%',
         'VIVA_ENVIRONMENT' => 'demo',
-        'VIVA_SOURCE_CODE' => '1234',
-        'VIVA_CLIENT_ID' => '.....apps.vivapayments.com',
-        'VIVA_CLIENT_SECRET' => '',
+        'VIVA_SOURCE_CODE' => '%%VIVA_SOURCE_CODE%%',
+        'VIVA_CLIENT_ID' => '%%VIVA_CLIENT_ID%%',
+        'VIVA_CLIENT_SECRET' => '%%VIVA_CLIENT_SECRET%%',
         'VIVA_BANK_TRANSFER_URL_API' => 'https://demo.vivapayments.com/api/wallets/{{platformAccountId}}/commands/banktransfer/{{vendorAccountId}}',
         'VIVA_WALLET_TO_WALLET_URL_API'=>'https://demo.vivapayments.com/api/wallets/{{platformAccountId}}/balancetransfer/{{vendorAccountId}}',
         'VIVA_SMARTCHECKOUT_COLOR'=>'0d1bbd',
@@ -23,17 +21,15 @@ return [
         'VIVA_URL' => 'https://www.vivapayments.com',
         'VIVA_ACCOUNT_URL' => 'https://accounts.vivapayments.com',
         'VIVA_API_URL' => 'https://api.vivapayments.com',
-        'VIVA_API_KEY' => '',
-        'VIVA_MERCHANT_ID' => '',
+        'VIVA_API_KEY' => '%%VIVA_API_KEY%%',
+        'VIVA_MERCHANT_ID' => '%%VIVA_MERCHANT_ID%%',
         'VIVA_ENVIRONMENT' => 'prod',
-        'VIVA_SOURCE_CODE' => '',
-        'VIVA_CLIENT_ID' => '',
-        'VIVA_CLIENT_SECRET' => '',
+        'VIVA_SOURCE_CODE' => '%%VIVA_SOURCE_CODE%%',
+        'VIVA_CLIENT_ID' => '%%VIVA_CLIENT_ID%%',
+        'VIVA_CLIENT_SECRET' => '%%VIVA_CLIENT_SECRET%%',
         'VIVA_BANK_TRANSFER_URL_API' => 'https://vivapayments.com/api/wallets/{{platformAccountId}}/commands/banktransfer/{{vendorAccountId}}',
         'VIVA_WALLET_TO_WALLET_URL_API'=>'https://vivapayments.com/api/wallets/{{platformAccountId}}/balancetransfer/{{vendorAccountId}}',
         'VIVA_SMARTCHECKOUT_COLOR'=>'0d1bbd',
         'VIVA_DEBUG'=>1,
     ]
-
-
 ];
