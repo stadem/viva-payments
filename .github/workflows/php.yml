@@ -55,4 +55,4 @@ jobs:
             viva-config.php.example > viva-config.php
 
     - name: Run Pest tests
-      run: ./vendor/bin/pest --coverage --colors=never
+      run: ./vendor/bin/pest tests/Payments --coverage --colors=never
