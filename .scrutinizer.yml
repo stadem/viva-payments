@@ -14,9 +14,17 @@ tools:
         runs: 1
 
 build:
+    environment:
+        OPENSSL_CFLAGS: "/usr/local/ssl/include"
+        OPENSSL_LIBS: "/usr/local/ssl/lib -lssl -lcrypto"
+
+    before_scripts:
+        - sudo apt-get update
+        - sudo apt-get install -y openssl libssl-dev
+        - openssl version
+
     nodes:
         analysis:
             tests:
                 override:
                     - ./vendor/bin/pest tests --coverage
-
