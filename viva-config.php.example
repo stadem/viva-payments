@@ -1,3 +1,5 @@
+<?php
+
 return [
     'curlDebug' => 0,   
     'defaultProvider' => 'vivaDEMO',
@@ -5,7 +7,7 @@ return [
         'VIVA_URL' => 'https://demo.vivapayments.com',
         'VIVA_ACCOUNT_URL' => 'https://demo-accounts.vivapayments.com',
         'VIVA_API_URL' => 'https://demo-api.vivapayments.com',
-        'VIVA_API_KEY' => '%%VIVA_API_KEY%%',
+        'VIVA_API_KEY' => '&k*y&b',
         'VIVA_MERCHANT_ID' => '%%VIVA_MERCHANT_ID%%',
         'VIVA_ENVIRONMENT' => 'demo',
         'VIVA_SOURCE_CODE' => '%%VIVA_SOURCE_CODE%%',
@@ -21,7 +23,7 @@ return [
         'VIVA_URL' => 'https://www.vivapayments.com',
         'VIVA_ACCOUNT_URL' => 'https://accounts.vivapayments.com',
         'VIVA_API_URL' => 'https://api.vivapayments.com',
-        'VIVA_API_KEY' => '%%VIVA_API_KEY%%',
+        'VIVA_API_KEY' => '&k*y&b',
         'VIVA_MERCHANT_ID' => '%%VIVA_MERCHANT_ID%%',
         'VIVA_ENVIRONMENT' => 'prod',
         'VIVA_SOURCE_CODE' => '%%VIVA_SOURCE_CODE%%',
