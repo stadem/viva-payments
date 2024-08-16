@@ -19,7 +19,7 @@
   },
 
   "require": {
-    "php": "^8.1.0"
+    "php": "^8.2.10"
   },
   "autoload-dev": {
     "psr-4": {
