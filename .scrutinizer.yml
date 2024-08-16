@@ -1,0 +1,22 @@
+filter:
+    paths:
+        - src
+        - tests
+
+tools:
+    php_code_sniffer:
+        config:
+            standard: PSR2
+    php_mess_detector: true
+    php_cpd: true
+    php_loc: true
+    security_checker: true
+    external_code_coverage:
+        runs: 1
+
+build:
+    nodes:
+        analysis:
+            tests:
+                override:
+                    - ./vendor/bin/pest tests --coverage
