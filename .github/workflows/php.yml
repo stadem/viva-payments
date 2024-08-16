@@ -50,7 +50,7 @@ jobs:
 
     - name: Replace config placeholders
       run: |
-        sed -e "s/%%VIVA_API_KEY%%/${{ secrets.VIVA_API_KEY }}/" \
+        sed -e "s/%%VIVA_API_KEY%%/${{ secrets.VIVA_API_KEY // &/\\& }}/" \
             -e "s/%%VIVA_MERCHANT_ID%%/${{ secrets.VIVA_MERCHANT_ID }}/" \
             -e "s/%%VIVA_SOURCE_CODE%%/${{ secrets.VIVA_SOURCE_CODE }}/" \
             -e "s/%%VIVA_CLIENT_ID%%/${{ secrets.VIVA_CLIENT_ID }}/" \
