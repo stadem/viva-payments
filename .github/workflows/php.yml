@@ -54,5 +54,5 @@ jobs:
             -e "s/%%VIVA_CLIENT_SECRET%%/${{ secrets.VIVA_CLIENT_SECRET }}/" \
             viva-config.php.example > viva-config.php
 
-    # - name: Run Pest tests
-    #   run: ./vendor/bin/pest --coverage --colors=never
+    - name: Run Pest tests
+      run: ./vendor/bin/pest --coverage --colors=never
