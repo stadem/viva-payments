@@ -1,30 +1,31 @@
-filter:
-    paths:
-        - src
-        - tests
-
-tools:
-    php_code_sniffer:
-        config:
-            standard: PSR2
-    php_mess_detector: true
-    php_cpd: true
-    php_loc: true
-    external_code_coverage:
-        runs: 1
-
 build:
-    environment:
-        OPENSSL_CFLAGS: "/usr/local/ssl/include"
-        OPENSSL_LIBS: "/usr/local/ssl/lib -lssl -lcrypto"
-
-    before_scripts:
-        - sudo apt-get update
-        - sudo apt-get install -y openssl libssl-dev
-        - openssl version
-
     nodes:
         analysis:
+            project_setup:
+                override: true
             tests:
-                override:
-                    - ./vendor/bin/pest tests --coverage
+                override: [php-scrutinizer-run]
+
+filter:
+    excluded_paths: [tests/*]
+
+checks:
+    php:
+        remove_extra_empty_lines: true
+        remove_php_closing_tag: true
+        remove_trailing_whitespace: true
+        fix_use_statements:
+            remove_unused: true
+            preserve_multiple: false
+            preserve_blanklines: true
+            order_alphabetically: true
+        fix_php_opening_tag: true
+        fix_linefeed: true
+        fix_line_ending: true
+        fix_identation_4spaces: true
+        fix_doc_comments: true
+
+tools:
+    external_code_coverage:
+        timeout: 600
+        runs: 3
