@@ -3,6 +3,8 @@
 [![Latest Version on Packagist](https://img.shields.io/packagist/v/stadem/viva-payments.svg?style=flat-square)](https://packagist.org/packages/stadem/viva-payments)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE)
 [![Build Status](https://img.shields.io/github/actions/workflow/status/stadem/viva-payments/php.yml?branch=master)](https://github.com/stadem/viva-payments/actions)
+[![Code Quality](https://scrutinizer-ci.com/g/stadem/viva-payments/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/stadem/viva-payments/?branch=master)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/stadem/viva-payments/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 
 
 
