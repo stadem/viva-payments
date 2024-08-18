@@ -60,5 +60,8 @@ jobs:
     - name: Display generated config
       run: cat viva-config.php
 
+    - name: Run PHPStan
+      run: ./vendor/bin/phpstan analyse src
+      
     - name: Run Pest tests
       run: ./vendor/bin/pest tests/Payments --coverage --colors=never
