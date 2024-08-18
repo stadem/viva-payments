@@ -16,11 +16,6 @@ class Transaction
 
     }
 
-
-
-
-    
-
     public function process(){
            echo 'Price =  '.$this->amount; 
 

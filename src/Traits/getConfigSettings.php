@@ -6,6 +6,9 @@ use Stadem\VivaPayments\Config\Config;
 trait getConfigSettings
 {
        public function getConfigSettings() {
+        if (!property_exists($this, 'accessToken')) {
+                throw new \Exception('Property $accessToken does not exist');
+            }
         $environment = $this->accessToken->getEnvironment();
         $config = new Config($environment);
         return $config;

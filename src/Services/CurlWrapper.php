@@ -111,25 +111,3 @@ class CurlWrapper {
         curl_close($this->ch);
     }
 }
-
-
-// $url = "https://mydomain.gr";
-// $curl = new CurlWrapper($url);
-// $curl->addHeader('Authorization: Bearer TOKEN');
-// $response = $curl->get();
-// echo $response;
-// $response = $curl->post(array('key' => 'value'));
-// echo $response;
-// $response = $curl->put(array('key' => 'value'));
-// echo $response;
-// $response = $curl->delete();
-// echo $response;
-// $curl->close();
-
-/*
-$curl = new CurlWrapper($_ENV['MERCHANT_API_URL']);
-$curl->setBasicAuth($_ENV['MERCHANT_USERNAME'], $_ENV['MERCHANT_PASSWORD']);
-$response = $curl->get();
-echo $response;
-echo $curl->getStatusCode();
-*/

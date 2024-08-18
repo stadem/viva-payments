@@ -21,10 +21,6 @@ $customer = new Customer(
 );
 
 // dd($customer);
-// print_r($customer->toArray());
-// print_r($customer->toJson()). PHP_EOL;
-
-// echo "<hr>";
 
 $CreatePaymentOrder  = [
     'amount'                => 120, //The amount associated with this payment order *100. Must be a positive, non-zero number
@@ -61,9 +57,9 @@ try {
 
     $getOrderJson = $order->send();
     
+    //Set the url by ID
     echo '<a href="' . $order->redirectUrl(PaymentMethods:8) . '" target="blank">';
-    // '<a href="'.$order->redirectUrl(PaymentMethods:Enums\PaymentMethods::fromName('VivaWallet')).'" '.$order->getOrderCode().' </a>';
-    // echo '<a href="' . $order->redirectUrl(PaymentMethods: Enums\PaymentMethods::fromName('CreditCard')) . '" target="blank">';
+    // Or set the url by name
     // echo '<a href="' . $order->redirectUrl(PaymentMethods: Enums\PaymentMethods::fromName('VivaWallet')) . '" target="blank">';
     echo $order->getOrderCode();
     echo '</a>';

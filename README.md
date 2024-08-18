@@ -303,13 +303,16 @@ try {
 ```
 
 
-## Run tests via PEST
+## Run tests via PEST & PHP STAN
 You can run tests via PEST with the following command
 
 ```
  ./vendor/bin/pest tests/Payments
 ```
 
+```
+ ./vendor/bin/phpstan analyse src
+```
 
 ## Upcoming Features
 Marketplace API Support: Future updates will include support for marketplace-related API calls.
