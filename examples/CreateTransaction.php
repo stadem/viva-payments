@@ -4,9 +4,10 @@ use Stadem\VivaPayments\Enums;
 use Stadem\VivaPayments\Services\AccessToken;
 use Stadem\VivaPayments\Request\Customer;
 use Stadem\VivaPayments\Request\CreatePaymentOrder;
+use Stadem\VivaPayments\Config\Config;
 
-
-$accessToken = new AccessToken();
+$config = new Config();
+$accessToken = new AccessToken($config);	
 $Token = $accessToken->getAccessToken();
 $statusCode = $accessToken->getStatusCode();
 // dd($Token);
@@ -50,7 +51,8 @@ $paymentMethodFees  =  [
 
 $getOrderJson = '';
 try {
-    $order = new CreatePaymentOrder($CreatePaymentOrder, $accessToken);
+    $config = new Config();
+	$order = new CreatePaymentOrder($CreatePaymentOrder, $accessToken,$config);
     $order->setCustomer($customer);
     $order->setPaymentMethods($paymentMethods);
     $order->setPaymentMethodsFees($paymentMethodFees);

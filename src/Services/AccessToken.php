@@ -10,15 +10,16 @@ class AccessToken
     private $accessToken;
     private $environment;
     private $statusCode;
+    public Config|Array $configObject;
 
-    public function __construct(string $environment = null){
+    public function __construct(Config|array $configObject){
+       
+     
+        $this->configObject=$configObject;
+        $configArray = $configObject->getConfig();
+        $environment= $configArray['defaultProvider'];
 
-        if($environment===null){
-            $config = new Config();
-            $environment = $config->getEnvConfig('defaultProvider'); 
-        }
-
-        if ($environment !== 'vivaDEMO' && $environment !== 'vivaPROD') {
+         if ($environment !== 'vivaDEMO' && $environment !== 'vivaPROD') {
             throw new \InvalidArgumentException('Invalid environment value {'.$environment.'}. It should be either "vivaDEMO" or "vivaPROD".');
         }
         $this->environment = $environment;   
@@ -26,8 +27,9 @@ class AccessToken
     }
 
     public function getAccessToken(): string
-    {
-        $config = new Config($this->environment);
+    {        
+    
+        $config = $this->configObject;
         $url = $config->getEnvConfig('VIVA_ACCOUNT_URL');
         $curl = new CurlWrapper($url.'/connect/token');
         $curl->addHeader('Content-Type: application/x-www-form-urlencoded');
@@ -44,7 +46,7 @@ class AccessToken
 
     public function getWebhookValidationToken() : array
     {
-        $config = new Config($this->environment);
+        $config = $this->configObject;
         $url = $config->getEnvConfig('VIVA_URL');
         $curl = new CurlWrapper($url.'/api/messages/config/token');
         $curl->addHeader('Content-Type: application/x-www-form-urlencoded');

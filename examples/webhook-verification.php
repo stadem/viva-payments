@@ -2,12 +2,13 @@
 
 require_once __DIR__ . '/../vendor/autoload.php';
 use Stadem\VivaPayments\Services\AccessToken;
-
+use Stadem\VivaPayments\Config\Config;
 
 // echo 'hello from proxy';
 
 try{
-    $accessToken = new AccessToken();
+    $config = new Config();
+    $accessToken = new AccessToken($config);   
     $webHookVerification = $accessToken->getWebhookValidationToken();
 
     echo json_encode($webHookVerification);

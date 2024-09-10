@@ -5,38 +5,39 @@ namespace Stadem\VivaPayments\Config;
 
 class Config
 {
-    private $settings;
     private $config;
     private $logger;
 
-    public function __construct($configKey = null)
+    public function __construct(array $customConfig = null)
     {
-        
-        // $this->settings = require dirname(__DIR__, 2) . '/viva-config.php';
-        
-        $paths = [
-            dirname(__DIR__, 2) . '/viva-config.php',
-            dirname(__DIR__, 5) . '/viva-config.php'];
+   
 
-        $this->settings = $this->loadConfigFile($paths);
+        if( $customConfig===null){
+             $paths = [
+                dirname(__DIR__, 2) . '/viva-config.php',
+                dirname(__DIR__, 5) . '/viva-config.php'
+            ];
+            $this->config = $this->loadConfigFile($paths);
 
-        
+        }else{
 
-        if ($configKey) {
-            $this->config = $this->get($configKey);
-        } else {
-            $this->config = $this->settings;
+            $this->config = $customConfig;
         }
+    }
+    
+    public function getConfig(): array {
+        return $this->config;
     }
 
     public function get($key)
     {
-        return $this->settings[$key] ?? null;
+        return $this->config[$key] ?? null;
     }
 
     public function getEnvConfig($key)
     {
-        return $this->config[$key] ?? null;
+        $env = $this->config['defaultProvider'];     
+        return $this->config[$env][$key] ?? null;
     }
 
 

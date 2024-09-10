@@ -21,9 +21,11 @@ class CreatePaymentOrder
     private $response;
     private $paymentMethods;
     private $paymentMethodFees;
+    public Config|Array $configObject;
 
-    public function __construct(?array $order, $accessToken)
+    public function __construct(?array $order, $accessToken,Config|array $configObject)
     {
+        $this->configObject=$configObject;
         $this->order = $order;
         $this->accessToken = $accessToken;
     }
@@ -58,8 +60,10 @@ class CreatePaymentOrder
 
     public function getOrder()
     {
+        $config = $this->configObject;
         $order = $this->order;
-        $order['sourceCode']  = $this->getConfigSettings()->getEnvConfig('VIVA_SOURCE_CODE');
+        $order['sourceCode']  = $config->getEnvConfig('VIVA_SOURCE_CODE');
+        // $order['sourceCode']  = $this->getConfigSettings()->getEnvConfig('VIVA_SOURCE_CODE');
         $order['customer'] = $this->getCustomer();
         $order['paymentMethods'] = $this->paymentMethods;
         $order['paymentMethodFees'][] = $this->paymentMethodFees;
@@ -96,9 +100,10 @@ class CreatePaymentOrder
 
     public function send()
     {
-
+         $config = $this->configObject;
         //For debugin - Set it to config
-        if ($this->getConfigSettings()->getEnvConfig('VIVA_DEBUG')) {
+        // if ($this->getConfigSettings()->getEnvConfig('VIVA_DEBUG')) {
+        if ($config->getEnvConfig('VIVA_DEBUG')) {
             $method = __METHOD__;
             $parentDir = dirname(dirname(dirname(__FILE__)));
             $fp = fopen($parentDir . '/debug_viva.txt', 'a+');
@@ -107,7 +112,8 @@ class CreatePaymentOrder
         }
 
         $token = $this->accessToken->getToken();
-        $url = $this->getConfigSettings()->getEnvConfig('VIVA_API_URL');
+        $url = $config->getEnvConfig('VIVA_API_URL');
+        // $url = $this->getConfigSettings()->getEnvConfig('VIVA_API_URL');
         $curl = new CurlWrapper($url . '/checkout/v2/orders');
 
         $curl->addHeader('Content-Type: application/json');
@@ -144,9 +150,13 @@ class CreatePaymentOrder
         int|PaymentMethods $PaymentMethods = null
     ) {
         $params = '';
+        $config = $this->configObject;
 
-        if (!$color && $this->getConfigSettings()->getEnvConfig('VIVA_SMARTCHECKOUT_COLOR')) {
-            $params .= "&color=" . $this->getConfigSettings()->getEnvConfig('VIVA_SMARTCHECKOUT_COLOR');
+        // if (!$color && $this->getConfigSettings()->getEnvConfig('VIVA_SMARTCHECKOUT_COLOR')) {
+        //     $params .= "&color=" . $this->getConfigSettings()->getEnvConfig('VIVA_SMARTCHECKOUT_COLOR');
+        // }
+        if (!$color && $config->getEnvConfig('VIVA_SMARTCHECKOUT_COLOR')) {
+            $params .= "&color=" . $config->getEnvConfig('VIVA_SMARTCHECKOUT_COLOR');
         }
 
         if ($color) $params .= "&color=" . $color;
@@ -169,7 +179,8 @@ class CreatePaymentOrder
 
 
         $orderCode = $this->vivaOrderCode;
-        $url = $this->getConfigSettings()->getEnvConfig('VIVA_URL');
+        $url = $config->getEnvConfig('VIVA_URL');
+        // $url = $this->getConfigSettings()->getEnvConfig('VIVA_URL');
         return $url . '/web2?ref=' . $orderCode . $params;
     }
 }
