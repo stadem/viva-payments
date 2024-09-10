@@ -51,7 +51,6 @@ $paymentMethodFees  =  [
 
 $getOrderJson = '';
 try {
-    $config = new Config();
 	$order = new CreatePaymentOrder($CreatePaymentOrder, $accessToken,$config);
     $order->setCustomer($customer);
     $order->setPaymentMethods($paymentMethods);

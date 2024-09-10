@@ -44,7 +44,6 @@ And for you local environment
         'VIVA_API_URL' => 'https://demo-api.vivapayments.com',
         'VIVA_API_KEY' => '',
         'VIVA_MERCHANT_ID' => '',
-        'VIVA_ENVIRONMENT' => '',
         'VIVA_SOURCE_CODE' => '',
         'VIVA_CLIENT_ID' => '',
         'VIVA_CLIENT_SECRET' => '',
@@ -61,7 +60,6 @@ And for you production
     'VIVA_API_URL' => 'https://api.vivapayments.com',
     'VIVA_API_KEY' => '',
     'VIVA_MERCHANT_ID' => '',
-    'VIVA_ENVIRONMENT' => 'prod',
     'VIVA_SOURCE_CODE' => '',
     'VIVA_CLIENT_ID' => '',
     'VIVA_CLIENT_SECRET' => '',
@@ -79,8 +77,7 @@ return [
         'VIVA_ACCOUNT_URL' => 'https://demo-accounts.vivapayments.com',
         'VIVA_API_URL' => 'https://demo-api.vivapayments.com',
         'VIVA_API_KEY' => 'a4bw%t%^',
-        'VIVA_MERCHANT_ID' => '123456',
-        'VIVA_ENVIRONMENT' => 'demo',
+        'VIVA_MERCHANT_ID' => '123456', 
         'VIVA_SOURCE_CODE' => '2222',
         'VIVA_CLIENT_ID' => '123456.vivapayments.com',
         'VIVA_CLIENT_SECRET' => '123456',
@@ -96,7 +93,6 @@ return [
         'VIVA_API_URL' => 'https://api.vivapayments.com',
         'VIVA_API_KEY' => '',
         'VIVA_MERCHANT_ID' => '',
-        'VIVA_ENVIRONMENT' => 'prod',
         'VIVA_SOURCE_CODE' => '',
         'VIVA_CLIENT_ID' => '',
         'VIVA_CLIENT_SECRET' => '',
@@ -119,7 +115,10 @@ use Stadem\VivaPayments\Request\Customer;
 use Stadem\VivaPayments\Request\CreatePaymentOrder;
 
 $requestLang = $_REQUEST['requestLang'] ?? 'Greek';
-$accessToken = new AccessToken(environment: 'vivaDEMO');
+
+ $config = new Config();
+ $accessToken = new AccessToken($config);
+
 
 $customer = new Customer(
     $email = 'test@gmail.com',
@@ -159,7 +158,7 @@ $paymentMethodFees  =  [
 
 
 try {
-    $order = new CreatePaymentOrder($CreatePaymentOrder, $accessToken);
+   	$order = new CreatePaymentOrder($CreatePaymentOrder, $accessToken,$config);
     $order->setCustomer($customer);
     $order->setPaymentMethods($paymentMethods);
     $order->setPaymentMethodsFees($paymentMethodFees);
@@ -189,9 +188,12 @@ use Stadem\VivaPayments\Enums;
 use Stadem\VivaPayments\Services\AccessToken;
 use Stadem\VivaPayments\Request\Customer;
 use Stadem\VivaPayments\Request\CreatePaymentOrder;
+use Stadem\VivaPayments\Config\Config;
 
+$config = new Config();
 $accessToken = new AccessToken(); // Set the value on config file -> defaultProvider
 or
+$config = new Config();
 $accessToken = new AccessToken(environment: 'vivaDEMO'); // By direct set, mostly for testing purposes 
 ```
 
@@ -245,7 +247,7 @@ $CreatePaymentOrder  = [
     'tags'                  => ['tag1', 'tag2'] 
 ];
 
-$order = new CreatePaymentOrder($CreatePaymentOrder, $accessToken);
+	$order = new CreatePaymentOrder($CreatePaymentOrder, $accessToken,$config);
 
 
 
@@ -291,7 +293,7 @@ The amount requested in cents is required. All the other parameters are optional
 
 ```php
 try {
-    $order = new CreatePaymentOrder($CreatePaymentOrder, $accessToken);
+    $order = new CreatePaymentOrder($CreatePaymentOrder, $accessToken,$config);
     $order->setCustomer($customer);
     $order->setPaymentMethods($paymentMethods);
     $order->setPaymentMethodsFees($paymentMethodFees);
@@ -328,11 +330,3 @@ This project is licensed under the MIT License. See the LICENSE file for details
 
 ## Disclaimer
 Note: This is an unofficial package, and its usage is at your own discretion.
-
-
-
-
-
-
-
-
